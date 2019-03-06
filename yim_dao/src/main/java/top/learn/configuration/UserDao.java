@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import top.learn.entity.User;
 
-
 @Repository
 @Mapper
 public interface UserDao extends tk.mybatis.mapper.common.Mapper<User>{

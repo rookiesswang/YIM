@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.learn.configuration.FriendDao">
+
+    <select id="selectFriendsById" resultType="top.learn.entity.Friend">
+       select  a.user_id, account, password, nickname, gender, avatar, status,sign, menu_id, menu_name
+       from user a  LEFT JOIN friend b
+       ON a.user_id = b.friend_id
+       where a.user_id in (select friend_id
+                           from friend where friend.user_id = 1)
+                           group by menu_id
+    </select>
+
+</mapper>

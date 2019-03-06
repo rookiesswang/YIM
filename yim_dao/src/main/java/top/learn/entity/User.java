@@ -1,28 +1,23 @@
 package top.learn.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
-
+public class User {
     private int userId;
     private String account;
     private String password;
     private String nickname;
     private String gender;
-    private String img;
-
-    public User(){}
-
-    public User(String account) {
-        super();
-        this.setAccount(account);
-    }
-
-
+    private String avatar;
+    private Integer status;
+    private Date lastLogin;
+    private String sign;
 
     @Id
     @Column(name = "user_id")
@@ -75,13 +70,43 @@ public class User implements Serializable {
     }
 
     @Basic
-    @Column(name = "img")
-    public String getImg() {
-        return img;
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Basic
+    @Column(name = "last_login")
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    @Basic
+    @Column(name = "sign")
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
     }
 
     @Override
@@ -94,11 +119,14 @@ public class User implements Serializable {
                 Objects.equals(password, user.password) &&
                 Objects.equals(nickname, user.nickname) &&
                 Objects.equals(gender, user.gender) &&
-                Objects.equals(img, user.img);
+                Objects.equals(avatar, user.avatar) &&
+                Objects.equals(status, user.status) &&
+                Objects.equals(lastLogin, user.lastLogin) &&
+                Objects.equals(sign, user.sign);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, account, password, nickname, gender, img);
+        return Objects.hash(userId, account, password, nickname, gender, avatar, status, lastLogin, sign);
     }
 }

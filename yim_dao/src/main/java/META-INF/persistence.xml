@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <class>top.learn.entity.User</class>
+        <class>top.learn.entity.UserFriend</class>
+        <properties>
+            <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost/yim?user=root&amp;password=wss123"/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="openjpa.ConnectionUserName" value=""/>
+            <property name="openjpa.ConnectionPassword" value=""/>
+            <property name="openjpa.Log" value="DefaultLevel=TRACE, Tool=INFO"/>
+        </properties>
+    </persistence-unit>
+</persistence>

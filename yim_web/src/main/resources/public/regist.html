@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+
+    <link rel="stylesheet" href="../css/layui.css" media="all">
+
+</head>
+<body>
+<script src="/layui.js"></script>
+<form class="layui-form" action="/user/register" method="post">
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" name="nickname" required lay-verify="required" placeholder="请输入昵称" autocomplete="off"
+                   class="layui-input" >
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="radio" name="gender" value="男" title="男">
+            <input type="radio" name="gender" value="女" title="女" checked>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <button type="button" class="layui-btn" style="margin-left: 50px" id="uploadAvatarBtn">
+            <i class="layui-icon" >&#xe67c;</i>上传图片
+            <input type="hidden" name = "avatar" id="avatar"/>
+        </button>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即注册</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+<script>
+    var imgpath = null;
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+       //监听提交
+        form.on('submit(formDemo)', function (data) {
+            if (imgpath != null)  {
+                $("#avatar").val(imgpath);
+            }
+            //layer.msg(JSON.stringify(data.field));
+            form.submit();
+        });
+    });
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#uploadAvatarBtn' //绑定元素
+            , url: '/file/fileUpload' //上传接口
+            , done: function (res) {
+                //上传完毕回调
+                if (res != null) {
+                    imgpath = res.data;
+                }
+                //layer.msg(res);
+                //layer.msg(imgpath);
+
+            }
+            , error: function () {
+                //请求异常回调
+            }
+        });
+    });
+</script>
+</body>
+</html>

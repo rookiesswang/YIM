@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="../css/login/demo.css" />
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="../css/login/component.css" />
-
     <!--[if IE]>
 
 
@@ -34,7 +33,7 @@
                             <input id ="password" name="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
                         </div>
                         <div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF"  onclick="check()">登录</a></div>
-                        <div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF"  id="regist" onclick="window.location.href = '/register'">注册</a></div>
+                        <div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF"  id="regist">注册</a></div>
                     </form>
                 </div>
             </div>
@@ -43,7 +42,7 @@
 </form>
 
 <!-- 注册模态框 -->
-<!--<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" style="position: absolute;top: 8%;left: 35%;">
         <div class="modal-content div-radius">
             <div class="modal-header">
@@ -91,15 +90,15 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="padding: 15px 25px;">
-                        <button type="button" onclick="register()" class="btn btn-primary" style="margin-right: 50px;">立即注册</button>
+                        <button type="button"  class="btn btn-primary" style="margin-right: 50px;">立即注册</button>
                         <button type="button" id="regCancelbutton" class="btn btn-default" style="margin-right: 200px;" data-dismiss="modal">&nbsp;&nbsp;&nbsp;&nbsp;关闭&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </div>
                 </div>
             </form>
             <div class="roleId hidden"></div>
-        </div>&lt;!&ndash; /.modal-content &ndash;&gt;
-    </div>&lt;!&ndash; /.modal &ndash;&gt;
-</div>-->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../layui.js"></script>
@@ -110,26 +109,37 @@
 <script src="../js/EasePack.min.js"></script>
 <script src="../js/rAF.js"></script>
 <script src="../js/demo-1.js"></script>
-
 <script type="text/javascript">
     function check() {
-        alert("123");
         var account = $("#account").val();
         var password = $("#password").val();
         $.post('/login', {'account': account, 'password': password}, function (result) {
-            alert(result);
             if (result.status == '200') {
-                alert("登陆成功！");
+                layer.msg('登陆成功！');
                 //window.location.href = '/modelManage';
                 window.location.href = '/chat/index';
             } else {
                 //$.cicc_messager.alert(result.msg, 2);
-                alert(result.msg);
+                layer.msg(result.msg);
             }
         });
     }
+
+    $("#regist").click(function () {
+        //此处用于演示
+                layer.open({
+                    type: 2,
+                    title: 'register',
+                    shadeClose: true,
+                    shade: false,
+                    maxmin: true, //开启最大化最小化按钮
+                    area: ['600px', '400px'],
+                    left:'466px',
+                    top:'143px',
+                    content: '/regist.html'
+                });
+               /*window.location.href = '/register';*/
+    })
 </script>
-
-
 </body>
 </html>
