@@ -2,20 +2,16 @@ package top.learn.entity;
 
 import lombok.Data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.sql.Date;
-import java.util.Objects;
+import java.io.Serializable;
 
 @Data
-public class Friend {
+public class Friend implements Serializable {
     private int userId;
     private String account;
     private String nickname;
     private String gender;
     private String avatar;
-    private Integer status;
+    private String status;
     private String sign;
     private String menuId;
     private String menuName;
@@ -60,11 +56,11 @@ public class Friend {
         this.avatar = avatar;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

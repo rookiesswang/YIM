@@ -4,18 +4,19 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class User implements Serializable {
     private int userId;
     private String account;
     private String password;
     private String nickname;
     private String gender;
     private String avatar;
-    private Integer status;
+    private String status;
     private Date lastLogin;
     private String sign;
 
@@ -81,11 +82,11 @@ public class User {
 
     @Basic
     @Column(name = "status")
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

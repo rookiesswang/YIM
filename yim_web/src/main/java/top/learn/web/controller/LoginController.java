@@ -3,6 +3,7 @@ package top.learn.web.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +21,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @RequestMapping("/")
     public String instance() {
         return "login";
@@ -36,6 +40,8 @@ public class LoginController {
                 if (MD5Utils.validPassword(password,existUser.getPassword())) {
                     log.info("帐户："+account+"登陆成功");
                     result.setStatus(ResultStatus.Success);
+                   
+                    redisTemplate.opsForSet().add("User" + existUser.getAccount(),existUser);
                 } else {
                     log.info("帐户："+account+"登陆密码错误");
                     result.setMsg("密码错误！");

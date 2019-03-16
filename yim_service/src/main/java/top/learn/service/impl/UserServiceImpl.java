@@ -3,8 +3,10 @@ package top.learn.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import top.learn.configuration.FriendDao;
+import top.learn.configuration.GroupDao;
 import top.learn.configuration.UserDao;
 import top.learn.entity.Friend;
+import top.learn.entity.Group;
 import top.learn.service.UserService;
 import top.learn.entity.User;
 
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private FriendDao friendDao;
 
+    @Autowired
+    private GroupDao groupDao;
+
     @Override
     public User findByAccount(String account) {
         return userDao.selectByAccount(account);
@@ -32,6 +37,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Friend> findFriendsById(Integer id) {
         return friendDao.selectFriendsById(id);
+    }
+
+    @Override
+    public List<Group> findGroupsById(Integer Id) {
+        return groupDao.selectGroupsById(Id);
     }
 
 

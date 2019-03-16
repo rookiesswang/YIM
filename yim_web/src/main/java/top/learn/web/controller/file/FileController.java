@@ -46,7 +46,8 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String filename = CommonConst.IMG_LOCATION_WINDOWS + "//" + fileName;
+        String filename = "avatar//"  + fileName;
+        log.info("保存文件路徑爲：" + filename);
         result.setData(filename);
         return result;
     }

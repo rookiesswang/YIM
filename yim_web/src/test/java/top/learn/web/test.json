@@ -1,0 +1,74 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": {
+    "mine": {
+      "username": "Tom",
+      "id": "123",
+      "status": "online",
+      "sign": null,
+      "avatar": "D://yim-resource//img//e83149ab-6332-4065-91c3-5c0e08f2e521.jpg"
+    },
+    "friend": [
+      {
+        "id": "1",
+        "groupname": "好友",
+        "list": [
+          {
+            "username": "123",
+            "id": "181125",
+            "status": "online",
+            "sign": "我爱吃瓜子",
+            "avatar": "D://yim-resource//img//f74ea784-4326-43fa-9fd8-2236ae42106d.jpg"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "groupname": "同事",
+        "list": [
+          {
+            "username": "123",
+            "id": "235379",
+            "status": "online",
+            "sign": "我爱吃瓜子",
+            "avatar": "D://yim-resource//img//e83149ab-6332-4065-91c3-5c0e08f2e521.jpg"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "groupname": "同学",
+        "list": [
+          {
+            "username": "小虫",
+            "id": "872652",
+            "status": "online",
+            "sign": "我爱吃瓜子",
+            "avatar": "D://yim-resource//img//f74ea784-4326-43fa-9fd8-2236ae42106d.jpg"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "groupname": "家人",
+        "list": [
+          {
+            "username": "大白",
+            "id": "192542",
+            "status": "online",
+            "sign": "我爱吃瓜子",
+            "avatar": "D://yim-resource//img//f74ea784-4326-43fa-9fd8-2236ae42106d.jpg"
+          }
+        ]
+      }
+    ],
+    "group": [
+      {
+        "groupname": "交流分享群",
+        "id": "110212",
+        "avatar": "D://yim-resource//img//f74ea784-4326-43fa-9fd8-2236ae42106d.jpg"
+      }
+    ]
+  }
+}
